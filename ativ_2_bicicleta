@@ -1,0 +1,53 @@
+class Bicicleta:
+    def __init__(self):
+        self.veloc_atual = 0
+        self.altura_cela = 70  
+        self.calibragem_pneus = 30  
+
+    def pedalar(self, velocidade):
+        if self.veloc_atual == 0:
+            self.veloc_atual = max(0, min(velocidade, 25))  
+        else:
+            print("A bicicleta está andando. Pare antes de pedalar novamente.")
+
+    def frear(self):
+        self.veloc_atual = 0
+
+    def regular_cela(self, nova_altura):
+        if self.veloc_atual == 0:
+            self.altura_cela = max(60, min(nova_altura, 90)) 
+            
+        else:
+            print("A bicicleta está andando. Pare antes de ajustar a altura da cela.")
+
+    def calibrar_pneus(self, nova_calibragem):
+        if self.veloc_atual == 0:
+            self.calibragem_pneus = max(20, min(nova_calibragem, 40)) 
+            
+        else:
+            print("A bicicleta está andando. Pare antes de calibrar os pneus.")
+
+    def status(self):
+        return f"Velocidade Atual: {self.veloc_atual}, Altura da Cela: {self.altura_cela}, Calibragem dos Pneus: {self.calibragem_pneus}"
+
+# Cria dois objetos da classe Bicicleta
+bicicleta1 = Bicicleta()
+bicicleta2 = Bicicleta()
+
+# Imprime os estados iniciais
+print("Estado Inicial da Bicicleta 1:", bicicleta1.status())
+print("Estado Inicial da Bicicleta 2:", bicicleta2.status())
+
+# Exeecução de métodos
+bicicleta1.pedalar(15)
+bicicleta1.regular_cela(80)
+bicicleta1.calibrar_pneus(35)
+
+bicicleta2.pedalar(10)
+bicicleta2.frear()
+bicicleta2.regular_cela(70)
+bicicleta2.calibrar_pneus(25)
+
+# Imprime os estados finais
+print("\nEstado Final da Bicicleta 1:", bicicleta1.status())
+print("Estado Final da Bicicleta 2:", bicicleta2.status())
